@@ -131,8 +131,10 @@
                         />
                       </td>
                       <td>
-                        <select class="form-control" readonly>
+                        <select class="form-control" value="<%= filters[filterKey].comparator %>" readonly>
                           <option>=</option>
+                          <option>!=</option>
+                          <option>exists</option>
                         </select>
                       </td>
                       <td>
@@ -141,7 +143,7 @@
                           class="form-control"
                           placeholder="Value"
                           name="<%= filterKey %>"
-                          value="<%= filters[filterKey] %>"
+                          value="<%= filters[filterKey].value %>"
                         />
                       </td>
                     </tr>
@@ -206,13 +208,13 @@
 
     const form = document.querySelector('#form')
     form.addEventListener('submit', () => {
-      console.log(form.key)
-      console.log(form.value)
-      console.log(form.comparator)
-      console.log(form.param)
+      console.log(form.key.value)
+      console.log(form.value.value)
+      console.log(form.comparator.value)
       form.param.setAttribute('name', form.key.value)
       form.param.value = form.value.value
       form.param.comparator = form.comparator.value
+      console.log(form.param)
     })
     function removeFilter (node) {
       node.closest('tr').remove()
