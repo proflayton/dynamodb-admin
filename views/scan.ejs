@@ -159,8 +159,10 @@
                       />
                     </td>
                     <td>
-                      <select class="form-control" readonly>
+                      <select class="form-control" id="comparator" readonly>
                         <option>=</option>
+                        <option>!=</option>
+                        <option>exists</option>
                       </select>
                     </td>
                     <td>
@@ -206,6 +208,7 @@
     form.addEventListener('submit', () => {
       form.param.setAttribute('name', form.key.value)
       form.param.value = form.value.value
+      form.param.comparator = form.comparator.value
     })
     function removeFilter (node) {
       node.closest('tr').remove()
